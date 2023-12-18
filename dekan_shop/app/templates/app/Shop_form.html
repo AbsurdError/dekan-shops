@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Forms</title>
+    <link rel="stylesheet" href="{% static 'css/style_forms.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header__wrap">
+                <h1 class="header__wrap__logo">Django Shop</h1>
+                <a class="header__wrap__link" href="{% url 'one-page' %}">Ноутбуки</a>
+                <a class="header__wrap__link" href="{% url 'two-page' %}">Мыши</a>
+                <a class="header__wrap__link" href="{% url 'three-page' %}">Наушники</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="form">
+        <div class="form__container">
+            <div class="form__block">
+
+                <h2 class="form__block__title">Добавить товар</h2>
+
+                <h4 class="form__block__title__ch">Раздел</h4>
+                <div class="form__block__input__ch__radio">
+                    {{ input_chapter }}
+                </div>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <h4 class="form__block__title__ch">Изображение (ссылка)</h4>
+                    {{ input_link_img }}
+                    <h4 class="form__block__title__ch">О товаре</h4>
+                    {{ input_title }}
+                    <h4 class="form__block__title__ch">Цена</h4>
+                    {{ input_price }}
+                    <input class="form__block__btn" type="submit" value="Добавить">
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

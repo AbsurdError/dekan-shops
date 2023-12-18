@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Computer Mouse</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="body__two-page__background">
+    <header>
+        <div class="container">
+            <div class="header__wrap">
+                <h1 class="header__wrap__logo">Django Shop</h1>
+                <a class="header__wrap__link" href="{% url 'one-page' %}">Ноутбуки</a>
+                <a class="header__wrap__link" href="{% url 'two-page' %}">Мыши</a>
+                <a class="header__wrap__link" href="{% url 'three-page' %}">Наушники</a>
+                <a class="header__wrap__btn" href="{% url 'shop-form' %}">Добавить товар</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="items">
+        <div class="container__two">
+
+            {% for i in comp_mouse %}
+            <div class="item__block">
+                <div class="items__block__li-img">
+                    <img class="item__block__img" src="{{ i.link_img }}" alt="">
+                </div>
+                <div class="item__block__text">
+                    <p class="item__op__block">{{ i.title }}</p>
+                    <div class="item__block__prices">
+                        <h2 class="items__block__price">{{ i.price }} ₽</h2>
+                        <a href="" class="items__block__btn"><h3 class="items__block__text__btn">Купить</h3></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+</body>
+</html>
