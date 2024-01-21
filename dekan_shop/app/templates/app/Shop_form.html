@@ -28,20 +28,20 @@
             <div class="form__block">
 
                 <h2 class="form__block__title">Добавить товар</h2>
+                <form method="POST">
+                    {% csrf_token %}
 
                 <h4 class="form__block__title__ch">Раздел</h4>
                 <div class="form__block__input__ch__radio">
-                    {{ input_chapter }}
+                    {{ product.chapter }}
                 </div>
 
-                <form method="POST">
-                    {% csrf_token %}
                     <h4 class="form__block__title__ch">Изображение (ссылка)</h4>
-                    {{ input_link_img }}
+                    {{ product.link_img }}
                     <h4 class="form__block__title__ch">О товаре</h4>
-                    {{ input_title }}
+                    {{ product.title }}
                     <h4 class="form__block__title__ch">Цена</h4>
-                    {{ input_price }}
+                    {{ product.price }}
                     <input class="form__block__btn" type="submit" value="Добавить">
                 </form>
             </div>
