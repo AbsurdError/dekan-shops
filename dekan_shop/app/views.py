@@ -17,22 +17,22 @@ def tree_page(request):
 
 def shop_form(request):
     if request.method == 'POST':
+        product = Product()
         product.title = request.POST.get('title', 'Undefined')
-        product.link_img = request.POST.get('link_img', 'Undefined')
+        product.path_img = request.POST.get('path_img', 'Undefined')
         product.price = request.POST.get('price', 'Undefined')
         product.input_chapter = request.POST('chapter', 'Undefined')
         product.save()
         if input_chapter == '1':
-            notebook.append({"price": price, "title": title, "link_img": link_img})
+            notebook.append({"price": price, "title": title, "path_img": path_img})
             Item_Notebook.objects.create(title=title, link_img=link_img, price=price)
         elif input_chapter == '2':
-            comp_mouse.append({"price": price, "title": title, "link_img": link_img})
+            comp_mouse.append({"price": price, "title": title, "path_img": path_img})
             Item_Comp_Mouse.objects.create(title=title, link_img=link_img, price=price)
         elif input_chapter == '3':
-            headphones.append({"price": price, "title": title, "link_img": link_img})
-            Item_Headphones.objects.create(title=title, link_img=link_img, price=price)
+            headphones.append({"price": price, "title": title, "path_img": path_img})
+            Item_Headphones.objects.create(title=title, path_img=path_img, price=price)
         return HttpResponseRedirect('/')
     else:
         product = Product()
-
         return render(request, 'app/Shop_form.html', context={'product': product})
