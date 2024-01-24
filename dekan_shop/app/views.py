@@ -21,13 +21,13 @@ def shop_form(request):
         title = request.POST.get('title', 'Undefined')
         path_img = request.POST.get('path_img', 'Undefined')
         price = request.POST.get('price', 'Undefined')
-        input_chapter = request.POST.get('chapter', 'Undefined')
+        chapters = request.POST.get('chapter', 'Undefined')
 
-        if input_chapter == 'Ноутбуки':
+        if chapters == 'Ноутбуки':
             Item_Notebook.objects.create(title=title, path_img=path_img, price=price)
-        elif input_chapter == 'Мыши':
+        elif chapters == 'Мыши':
             Item_Comp_Mouse.objects.create(title=title, path_img=path_img, price=price)
-        elif input_chapter == 'Наушники':
+        elif chapters == 'Наушники':
             Item_Headphones.objects.create(title=title, path_img=path_img, price=price)
         return HttpResponseRedirect('/')
     else:
